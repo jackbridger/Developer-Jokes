@@ -8,6 +8,7 @@ target 'Jokester' do
 
   use_react_native!(:path => config["reactNativePath"])
 
+
   target 'JokesterTests' do
     inherit! :complete
     # Pods for testing
