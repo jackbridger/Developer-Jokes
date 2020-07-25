@@ -22,6 +22,13 @@ import personaliseJoke from '../../utils/personaliseJoke';
 
 export default ({route}) => {
   const {developerName} = route.params;
+
+  useEffect(() => {
+    if (!developerName) {
+      navigation.navigate('Onboarding');
+    }
+  }, [developerName]);
+
   return (
     <SafeAreaView>
       <ScrollView contentInsetAdjustmentBehavior="automatic">
