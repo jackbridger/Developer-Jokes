@@ -1,0 +1,1 @@
+export default NAME_OF_DEVELOPER = 'NAME_OF_DEVELOPER';
