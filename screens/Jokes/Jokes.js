@@ -17,11 +17,14 @@ import {
   DebugInstructions,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-import jokesList from './../../database/JokesList';
+import jokesListData from './../../database/JokesList';
 import personaliseJoke from '../../utils/personaliseJoke';
+import upVote from '../../utils/upVote';
+import downVote from '../../utils/downVote';
 
 export default ({route}) => {
   const {developerName} = route.params;
+  const [jokesList, setJokesList] = useState(jokesListData);
 
   useEffect(() => {
     if (!developerName) {
@@ -44,6 +47,14 @@ export default ({route}) => {
                   {personaliseJoke(joke.punchline, developerName)}
                 </Paragraph>
                 <Paragraph>Score: {joke.score}</Paragraph>
+                <Button
+                  onPress={() => setJokesList(upVote(joke.id, jokesList))}>
+                  Upvote
+                </Button>
+                <Button
+                  onPress={() => setJokesList(downVote(joke.id, jokesList))}>
+                  Downvote
+                </Button>
               </Card.Content>
             </Card>
           ))}
