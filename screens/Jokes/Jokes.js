@@ -15,6 +15,7 @@ import upVote from '../../utils/upVote';
 import downVote from '../../utils/downVote';
 import storeDataLocally from '../../utils/storeDataLocally';
 import getLocalData from '../../utils/getLocalData';
+import sortJokes from '../../utils/sortJokes';
 
 export default ({route}) => {
   const {fonts, colors} = useTheme();
@@ -31,11 +32,11 @@ export default ({route}) => {
     // set jokes list
     // if jokes list doesn't exist, then updated it, then set it
     getLocalData()
-      .then((data) => setJokesList(data))
+      .then((data) => setJokesList(sortJokes(data)))
       .catch((err) => {
         storeDataLocally(jokesListData)
           .then((data) => {
-            setJokesList(data);
+            setJokesList(sortJokes(data));
           })
           .catch((err) => Alert.alert('error fetching data', err));
       });
