@@ -9,9 +9,12 @@ export default getLocalData = () => {
   return new Promise(async (resolve, reject) => {
     try {
       const value = await AsyncStorage.getItem(STORAGE_KEY);
+      console.log({value});
       if (value !== null) {
         const objValue = JSON.parse(value);
         resolve(objValue);
+      } else {
+        reject('Need to set storage');
       }
     } catch (e) {
       reject(e);
