@@ -2,7 +2,7 @@ import 'react-native-gesture-handler';
 import React, {useEffect, useState} from 'react';
 import {useIsFocused} from '@react-navigation/native';
 
-import {View} from 'react-native';
+import {View, Image} from 'react-native';
 import {
   Title,
   Subheading,
@@ -32,7 +32,18 @@ export default ({navigation}) => {
         alignContent: 'center',
         justifyContent: 'center',
       }}>
-      <Surface style={{padding: 10, margin: 20}}>
+      <Surface
+        style={{
+          padding: 10,
+          margin: 20,
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
+        <Image
+          style={{padding: 10, margin: 40}}
+          source={require('../../assets/icons/logo.png')}
+        />
         <Title style={{fontFamily: fonts.bold}}>
           Get personalised developer jokes
         </Title>
@@ -43,6 +54,7 @@ export default ({navigation}) => {
         <TextInput
           style={{
             margin: 20,
+            width: '80%',
           }}
           mode="outlined"
           label="Developer Name"
