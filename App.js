@@ -19,8 +19,18 @@ const App: () => React$Node = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Onboarding" component={Onboarding} />
-        <Stack.Screen name="Jokes" component={Jokes} />
+        <Stack.Screen
+          name="Home"
+          component={Onboarding}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Jokes"
+          component={Jokes}
+          options={{
+            title: 'Jokes',
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
