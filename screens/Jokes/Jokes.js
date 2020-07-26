@@ -7,28 +7,46 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
-import {Card, Paragraph, useTheme} from 'react-native-paper';
+import {Card, Paragraph, Button, useTheme} from 'react-native-paper';
 
 import jokesListData from './../../database/JokesList';
 import personaliseJoke from '../../utils/personaliseJoke';
 import upVote from '../../utils/upVote';
 import downVote from '../../utils/downVote';
+import storeDataLocally from '../../utils/storeDataLocally';
+import getLocalData from '../../utils/getLocalData';
+import sortJokes from '../../utils/sortJokes';
 
 export default ({route}) => {
   const {fonts, colors} = useTheme();
   const {developerName} = route.params;
-  const [jokesList, setJokesList] = useState(jokesListData);
+  const [jokesList, setJokesList] = useState();
   useEffect(() => {
     if (!developerName) {
       navigation.navigate('Home');
     }
   }, [developerName]);
 
+  useEffect(() => {
+    // get the stored jokes list
+    // set jokes list
+    // if jokes list doesn't exist, then updated it, then set it
+    getLocalData()
+      .then((data) => setJokesList(sortJokes(data)))
+      .catch((err) => {
+        storeDataLocally(jokesListData)
+          .then((data) => {
+            setJokesList(sortJokes(data));
+          })
+          .catch((err) => Alert.alert('error fetching data', err));
+      });
+  }, []);
+
   return (
     <SafeAreaView>
       <ScrollView contentInsetAdjustmentBehavior="automatic">
         <View>
-          {jokesList.map((joke) => (
+          {jokesList?.map((joke) => (
             <Card
               elevation={3}
               key={joke.id}
@@ -55,7 +73,13 @@ export default ({route}) => {
                     justifyContent: 'space-between',
                   }}>
                   <TouchableOpacity
-                    onPress={() => setJokesList(downVote(joke.id, jokesList))}
+                    onPress={() => {
+                      storeDataLocally(downVote(joke.id, jokesList)).then(
+                        (data) => {
+                          setJokesList(data);
+                        },
+                      );
+                    }}
                     style={{
                       backgroundColor: colors.red,
                       height: 65,
@@ -71,7 +95,13 @@ export default ({route}) => {
                   </TouchableOpacity>
                   <Paragraph>Score: {joke.score}</Paragraph>
                   <TouchableOpacity
-                    onPress={() => setJokesList(upVote(joke.id, jokesList))}
+                    onPress={() => {
+                      storeDataLocally(upVote(joke.id, jokesList)).then(
+                        (data) => {
+                          setJokesList(data);
+                        },
+                      );
+                    }}
                     style={{
                       backgroundColor: colors.green,
                       height: 65,
