@@ -13,6 +13,7 @@ export default theme = {
     background: '#FFFFFF',
     white: '#FFFFFF',
     surface: '#FFE6E2',
+    black: '#000000',
     // placeholder: '',
   },
   fonts: {

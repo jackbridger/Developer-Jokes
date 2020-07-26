@@ -1,5 +1,4 @@
 import NAME_OF_DEVELOPER from './../constants/NAME_OF_DEVELOPER';
-console.log({NAME_OF_DEVELOPER});
 export default [
   {
     id: 1,
@@ -12,7 +11,6 @@ export default [
     score: 0,
   },
   {
-    // When Chuck Norris throws exceptions,
     id: 2,
     setup: ['When ', NAME_OF_DEVELOPER, ' throws exceptions, '],
     punchline: ['it’s across the room.'],

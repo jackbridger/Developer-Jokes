@@ -7,7 +7,7 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
-import {Card, Paragraph, Button, useTheme} from 'react-native-paper';
+import {Card, Paragraph, useTheme} from 'react-native-paper';
 
 import jokesListData from './../../database/JokesList';
 import personaliseJoke from '../../utils/personaliseJoke';
@@ -51,7 +51,6 @@ export default ({route}) => {
               elevation={3}
               key={joke.id}
               style={{
-                // backgroundColor: colors.pink,
                 margin: 20,
                 padding: 10,
                 borderRadius: 10,
@@ -93,7 +92,20 @@ export default ({route}) => {
                       source={require('../../assets/icons/jokester-logo-down.png')}
                     />
                   </TouchableOpacity>
-                  <Paragraph>Score: {joke.score}</Paragraph>
+                  <Paragraph
+                    style={{
+                      // fontFamily: fonts.bold,
+                      textDecorationLine: 'underline',
+                      textDecorationStyle: 'solid',
+                      textDecorationColor:
+                        joke.score > 0
+                          ? colors.green
+                          : joke.score < 0
+                          ? colors.red
+                          : colors.primary,
+                    }}>
+                    Score: {joke.score}
+                  </Paragraph>
                   <TouchableOpacity
                     onPress={() => {
                       storeDataLocally(upVote(joke.id, jokesList)).then(
