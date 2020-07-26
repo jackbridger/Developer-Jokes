@@ -9,6 +9,7 @@ import {
   Button,
   Card,
   Paragraph,
+  useTheme,
 } from 'react-native-paper';
 import {
   Header,
@@ -23,12 +24,12 @@ import upVote from '../../utils/upVote';
 import downVote from '../../utils/downVote';
 
 export default ({route}) => {
+  const {fonts, colors} = useTheme();
   const {developerName} = route.params;
   const [jokesList, setJokesList] = useState(jokesListData);
-
   useEffect(() => {
     if (!developerName) {
-      navigation.navigate('Onboarding');
+      navigation.navigate('Home');
     }
   }, [developerName]);
 
@@ -36,23 +37,36 @@ export default ({route}) => {
     <SafeAreaView>
       <ScrollView contentInsetAdjustmentBehavior="automatic">
         <View>
-          <Title>Jokes for {developerName}</Title>
           {jokesList.map((joke) => (
-            <Card key={joke.id}>
+            <Card
+              elevation={3}
+              key={joke.id}
+              style={{
+                // backgroundColor: colors.pink,
+                margin: 20,
+                padding: 10,
+                borderRadius: 10,
+              }}>
               <Card.Content>
-                <Paragraph>
+                <Paragraph style={{fontFamily: fonts.bold}}>
                   {personaliseJoke(joke.setup, developerName)}
                 </Paragraph>
-                <Paragraph>
+                <Paragraph style={{fontFamily: fonts.regular}}>
                   {personaliseJoke(joke.punchline, developerName)}
                 </Paragraph>
                 <Paragraph>Score: {joke.score}</Paragraph>
                 <Button
-                  onPress={() => setJokesList(upVote(joke.id, jokesList))}>
+                  onPress={() => setJokesList(upVote(joke.id, jokesList))}
+                  style={{
+                    backgroundColor: colors.green,
+                  }}>
                   Upvote
                 </Button>
                 <Button
-                  onPress={() => setJokesList(downVote(joke.id, jokesList))}>
+                  onPress={() => setJokesList(downVote(joke.id, jokesList))}
+                  style={{
+                    backgroundColor: colors.red,
+                  }}>
                   Downvote
                 </Button>
               </Card.Content>
