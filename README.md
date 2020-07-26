@@ -1,7 +1,6 @@
 # Ferly jokes app
 
-![](https://i.imgur.com/v4FX6u4.png =250x) 
-
+![](https://i.imgur.com/v4FX6u4.png =250x)
 
 ![](https://i.imgur.com/4z24FaW.png =250x)
 
