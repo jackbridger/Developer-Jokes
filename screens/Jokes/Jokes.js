@@ -1,23 +1,14 @@
 import 'react-native-gesture-handler';
 import React, {useEffect, useState} from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {SafeAreaView, ScrollView, View, Text, StatusBar} from 'react-native';
 import {
-  Title,
-  Subheading,
-  TextInput,
-  Button,
-  Card,
-  Paragraph,
-  useTheme,
-} from 'react-native-paper';
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+  SafeAreaView,
+  ScrollView,
+  View,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
+import {Card, Paragraph, useTheme} from 'react-native-paper';
+
 import jokesListData from './../../database/JokesList';
 import personaliseJoke from '../../utils/personaliseJoke';
 import upVote from '../../utils/upVote';
@@ -54,21 +45,45 @@ export default ({route}) => {
                 <Paragraph style={{fontFamily: fonts.regular}}>
                   {personaliseJoke(joke.punchline, developerName)}
                 </Paragraph>
-                <Paragraph>Score: {joke.score}</Paragraph>
-                <Button
-                  onPress={() => setJokesList(upVote(joke.id, jokesList))}
+
+                <View
                   style={{
-                    backgroundColor: colors.green,
+                    paddingBottom: 10,
+                    paddingTop: 15,
+                    display: 'flex',
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
                   }}>
-                  Upvote
-                </Button>
-                <Button
-                  onPress={() => setJokesList(downVote(joke.id, jokesList))}
-                  style={{
-                    backgroundColor: colors.red,
-                  }}>
-                  Downvote
-                </Button>
+                  <TouchableOpacity
+                    onPress={() => setJokesList(downVote(joke.id, jokesList))}
+                    style={{
+                      backgroundColor: colors.red,
+                      height: 65,
+                      width: 65,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      borderRadius: 10,
+                    }}>
+                    <Image
+                      source={require('../../assets/icons/jokester-logo-down.png')}
+                    />
+                  </TouchableOpacity>
+                  <Paragraph>Score: {joke.score}</Paragraph>
+                  <TouchableOpacity
+                    onPress={() => setJokesList(upVote(joke.id, jokesList))}
+                    style={{
+                      backgroundColor: colors.green,
+                      height: 65,
+                      width: 65,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      borderRadius: 10,
+                    }}>
+                    <Image source={require('../../assets/icons/logo.png')} />
+                  </TouchableOpacity>
+                </View>
               </Card.Content>
             </Card>
           ))}

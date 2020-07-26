@@ -1,7 +1,14 @@
 import 'react-native-gesture-handler';
 import React, {useEffect, useState} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import {SafeAreaView, ScrollView, View, Text, StatusBar} from 'react-native';
+import {
+  SafeAreaView,
+  ScrollView,
+  View,
+  Text,
+  StatusBar,
+  Image,
+} from 'react-native';
 import {Title, Subheading, TextInput, Button} from 'react-native-paper';
 import {
   Header,
@@ -14,6 +21,10 @@ import {createStackNavigator} from '@react-navigation/stack';
 const Stack = createStackNavigator();
 import Jokes from './screens/Jokes/Jokes';
 import Onboarding from './screens/Onboarding/Onboarding';
+
+function LogoTitle() {
+  return <Image source={require('./assets/icons/logo.png')} />;
+}
 
 const App: () => React$Node = () => {
   return (
@@ -28,7 +39,7 @@ const App: () => React$Node = () => {
           name="Jokes"
           component={Jokes}
           options={{
-            title: 'Jokes',
+            headerTitle: () => <LogoTitle />,
           }}
         />
       </Stack.Navigator>
