@@ -1,3 +1,6 @@
+// Function that takes an id,
+// upvotes the joke with that id and returns the amended array
+
 export default (id, jokesList) => {
   return jokesList.reduce((accum, joke) => {
     if (joke.id === id) {

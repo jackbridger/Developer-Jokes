@@ -1,3 +1,6 @@
+// Takes a list of jokes,
+// Reorders them by score (descending)
+
 export default (listOfJokes) => {
   return listOfJokes.sort(compare);
 };

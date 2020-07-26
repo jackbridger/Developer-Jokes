@@ -2,7 +2,7 @@ import 'react-native-gesture-handler';
 import React, {useEffect, useState} from 'react';
 import {useIsFocused} from '@react-navigation/native';
 
-import {View} from 'react-native';
+import {View, Image} from 'react-native';
 import {
   Title,
   Subheading,
@@ -32,8 +32,19 @@ export default ({navigation}) => {
         alignContent: 'center',
         justifyContent: 'center',
       }}>
-      <Surface style={{padding: 10, margin: 20}}>
-        <Title style={{fontFamily: 'Roboto-Bold'}}>
+      <Surface
+        style={{
+          padding: 10,
+          margin: 20,
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
+        <Image
+          style={{padding: 10, margin: 40}}
+          source={require('../../assets/icons/logo.png')}
+        />
+        <Title style={{fontFamily: fonts.bold}}>
           Get personalised developer jokes
         </Title>
         <Subheading style={{lineHeight: 35}}>
@@ -42,10 +53,8 @@ export default ({navigation}) => {
         </Subheading>
         <TextInput
           style={{
-            // backgroundColor: colors.pink,
             margin: 20,
-            padding: 0,
-            borderRadius: 10,
+            width: '80%',
           }}
           mode="outlined"
           label="Developer Name"
@@ -64,14 +73,13 @@ export default ({navigation}) => {
             paddingBottom: 10,
             paddingTop: 0,
             borderRadius: 10,
-            color: 'black',
+            color: fonts.black,
           }}
           onPress={() => {
             if (developerName.length === 0) {
               setDisplayMessage(true);
             } else {
               navigation.navigate('Jokes', {developerName});
-              console.log('get jokes');
             }
           }}>
           GET JOKES
