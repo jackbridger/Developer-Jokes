@@ -1,8 +1,6 @@
 # Ferly jokes app
 
-![](https://i.imgur.com/v4FX6u4.png)
-
-![](https://i.imgur.com/4z24FaW.png)
+![](https://i.imgur.com/v4FX6u4.png =250x) ![](https://i.imgur.com/4z24FaW.png =250x)
 
 ## How to run the app on ios
 
@@ -48,7 +46,7 @@ Only a couple of my friends had ever used a jokes website. But they uncovered a 
 
 ## Architecture/key functions initial plan
 
-![](https://i.imgur.com/m4SEgy0.jpg)
+![](https://i.imgur.com/m4SEgy0.jpg =250x)
 
 ## Questions:
 
@@ -56,7 +54,7 @@ Only a couple of my friends had ever used a jokes website. But they uncovered a 
 
 - Custom fonts: a pain to get them working in React Native. React-Native link not working: https://stackoverflow.com/questions/60925703/custom-fonts-not-working-on-react-native-0-62 - solved by copying fonts in manually into ios.
 - Where this came from
-  ![](https://i.imgur.com/SOm2Z0y.png)
+  ![](https://i.imgur.com/SOm2Z0y.png =250x)
 
 ### Did you learn something?
 
