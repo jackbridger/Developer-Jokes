@@ -1,17 +1,16 @@
 import 'react-native-gesture-handler';
 import React, {useEffect, useState} from 'react';
-import {NavigationContainer, useIsFocused} from '@react-navigation/native';
+import {useIsFocused} from '@react-navigation/native';
 
-import {SafeAreaView, ScrollView, View, Text, StatusBar} from 'react-native';
+import {View} from 'react-native';
 import {
   Title,
   Subheading,
   TextInput,
   Button,
-  Paragraph,
   useTheme,
-  Card,
   Surface,
+  Paragraph,
 } from 'react-native-paper';
 
 export default ({navigation}) => {
@@ -33,11 +32,11 @@ export default ({navigation}) => {
         alignContent: 'center',
         justifyContent: 'center',
       }}>
-      <Surface style={{padding: 10, margin: 10}}>
+      <Surface style={{padding: 10, margin: 20}}>
         <Title style={{fontFamily: 'Roboto-Bold'}}>
           Get personalised developer jokes
         </Title>
-        <Subheading style={{lineHeight: 40}}>
+        <Subheading style={{lineHeight: 35}}>
           Funny code review compliments for the excellent developers in your
           life
         </Subheading>
@@ -59,7 +58,6 @@ export default ({navigation}) => {
         <Button
           mode="contained"
           style={{
-            // backgroundColor: colors.pink,
             margin: 20,
             paddingLeft: 10,
             paddingRight: 10,
@@ -79,14 +77,14 @@ export default ({navigation}) => {
           GET JOKES
         </Button>
         {displayMessage && (
-          <Text
+          <Paragraph
             style={{
               color: colors.red,
               fontFamily: fonts.bold,
               padding: 10,
             }}>
             Please write a developer's name
-          </Text>
+          </Paragraph>
         )}
       </Surface>
     </View>
