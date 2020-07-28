@@ -1,4 +1,4 @@
-# Ferly jokes app
+# Developer Jokes app
 
 ![](https://i.imgur.com/v4FX6u4.png)
 
